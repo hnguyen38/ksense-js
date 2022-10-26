@@ -3,7 +3,10 @@ const table = document.getElementById("ul");
 //get users
 fetch("https://jsonplaceholder.typicode.com/users")
   .then((response) => response.json())
-  .then((data) => showUsers(data));
+  .then((data) => showUsers(data))
+  .catch((error) => {
+    console.log("Error:", error);
+  });
 
 //display users
 function showUsers(data) {
@@ -60,6 +63,9 @@ function appendPosts(id, list) {
         postList.appendChild(body);
       }
       list.appendChild(postList);
+    })
+    .catch((error) => {
+      console.log("Error:", error);
     });
 }
 
